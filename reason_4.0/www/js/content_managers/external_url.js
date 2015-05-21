@@ -13,91 +13,6 @@ function getOptions(item){
 
 }
 
-// function addOptions(options){
-// 	for(var x=0;x<options.length;x+=1){
-// 		var optionElem = document.createElement("OPTION");
-// 		optionElem.setAttribute('value',options[x]);
-// 		var optionText = document.createTextNode(options[x]);
-//  		optionElem.appendChild(optionText);
-//  		$('#field_titleElement').append(optionElem);
-//  	}
-//  }
-//
-// function displayFeed(event){
-// 	if(event != undefined){
-// 		var url = event.target.value;
-// 	}
-// 	else{
-// 		var url = $("#urlElement")[0].value;
-// 	}
-// 	$.get(url, function (data) {
-// 		$('#previewElement').html("");
-// 		if(url != "" && $(data).find("item").length == 0){
-// 			var item = document.createElement("DIV");
-// 			item.className = "rssPreviewItem";
-// 			var error = document.createElement("P");
-// 			var errorCont = document.createTextNode("Error: URL does not contain an RSS feed.");
-// 			error.appendChild(errorCont);
-// 			item.appendChild(error);
-// 			$('#previewElement').append(item);
-// 		}
-// 		else{
-// 			if($(data).find("item").length != 0){
-// 				var options = getOptions($(data).find("item")[0]);
-// 				//addOptions(options);
-// 				var remvOptions = ['title','description','author'];
-// 				for(var x =0; x<remvOptions.length; x+=1){
-// 					if(options.indexOf(remvOptions[x]) != -1){
-// 						options.splice(options.indexOf(remvOptions[x]),1);
-// 					}
-// 				}
-// 			}
-// 			$(data).find("item").slice(0,3).each(function () {
-// 	        		var el = $(this);
-//
-// 					var item = document.createElement("DIV");
-// 					item.className = "rssPreviewItem";
-// 					var title = document.createElement("H3");
-// 					var author = document.createElement("P");
-// 					author.className = "rssPreviewAuthor";
-// 					var desc = document.createElement("P");
-// 					var titleText = el.find('title').text();
-// 					var authorText = el.find('author').text();
-// 					var descText = el.find('description').text();
-// 					var titleCont = document.createTextNode(titleText);
-// 					if(authorText != ""){
-// 						var authorCont = document.createTextNode("By " + authorText);
-// 					}
-// 					else{
-// 						var authorCont = document.createTextNode("");
-// 					}
-// 					if(descCont != ""){
-// 						var descCont = document.createTextNode(descText);
-// 					}
-// 					else{
-// 						var descCont = document.createTextNode("");
-// 					}
-// 					title.appendChild(titleCont);
-// 					author.appendChild(authorCont);
-// 					desc.appendChild(descCont);
-// 					item.appendChild(title);
-// 					item.appendChild(author);
-// 					item.appendChild(desc);
-//
-// 					//dynamic options
-// 					for(var x =0; x<options.length; x+=1){
-// 							var option = document.createElement("P");
-// 							var optionCont = document.createTextNode(options[x] +": " + el.find(options[x]).text());
-// 							option.appendChild(optionCont);
-// 							item.appendChild(option);
-// 					}
-//
-// 					$('#previewElement').append(item);
-// 	    		});
-// 			}
-// 	});
-// }
-
 function displayFeed(){
 	for(x=0;x<rssItems.length;x+=1){
 		var itemDiv = document.createElement("DIV");
@@ -155,6 +70,5 @@ $(document).ready(function() {
 		$("#fieldtitleRow").hide();
 		$("#fieldwordsRow").hide();
 	}
-	//$("#urlElement").blur(displayFeed);
-	//$("#urlElement").change(displayFeed);
+
 });

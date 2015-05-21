@@ -118,15 +118,6 @@
 							$x+=count($rssItems);
 						}
 					}
-					// foreach($rssItems as $item){
-					// 	$newItem = [];
-					// 	foreach(array_keys($item) as $key){
-					// 		if(substr($key,-1) != "#"){
-					// 			$newItem[$key] = $item[$key];
-					// 		}
-					// 	}
-					// 	array_push($rssNewItems,$newItem);
-					// }
 					echo('<script>var rssItems = JSON.parse(\'' . addslashes(json_encode($rssNewItems)) . '\');</script>');
 				}
 			}
@@ -134,9 +125,6 @@
 			ksort($options);
 			$options = array_merge(array("Any"=>"Any"),$options);
 			$this->set_element_properties('field_title',['options'=>$options]);
-			// $this->set_element_properties('field_title',['db_type'=>'enum("Any","title")']);
-			//$this->set_element_properties('field_title',['add_other'=>true]);
-			//var_dump($this->get_element('field_title'));
 
 		$this->head_items->add_javascript(WEB_JAVASCRIPT_PATH .'content_managers/external_url.js');
 		$this->head_items->add_stylesheet(REASON_HTTP_BASE_PATH.'css/content_managers/external_url.css');
