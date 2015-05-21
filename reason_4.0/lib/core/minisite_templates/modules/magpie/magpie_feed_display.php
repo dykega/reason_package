@@ -35,6 +35,7 @@
 		);
 		var $feed_location;
 		var $is_remote;
+		var $options;
 		function init( $args = array() )
 		{
 			parent::init( $args );
@@ -54,7 +55,7 @@
             {
                 $this->display_timestamp = $this->params['display_timestamp'];
             }
-            
+
             if(!empty($this->params['show_entries_lacking_description']))
             {
                 $this->_show_entries_lacking_description = $this->params['show_entries_lacking_description'];
@@ -79,6 +80,12 @@
 				{
 					$url = current($urls);
 					$cache[$this->parent->cur_page->id()] = $url->get_value('url');
+					$entOptions = [];
+					$availOptions = ['num_posts','field_title','field_words','future_posts'];
+					foreach($availOptions as $option){
+						$entOptions[$option] = $url->get_value($option);
+					}
+					$this->options = $entOptions;
 				}
 				else
 				{
@@ -108,6 +115,7 @@
 		$rfd->set_location($this->feed_location, $this->is_remote);
 		$rfd->set_page_query_string_key('view_page');
 		$rfd->set_search_query_string_key('search');
+		$rfd->set_options($this->options);
 		if(!empty($this->request['view_page']))
 		{
 			$rfd->set_page($this->request['view_page']);

@@ -20,11 +20,14 @@
  	 */
 	class Magpie_Feed_Nav extends Magpie_Feed_Display
 	{
+		var $options;
+		
 		function run()
 		{
         	reason_include_once( 'minisite_templates/modules/magpie/reason_rss.php' );
-        	
+
 			$rfd = new reasonFeedDisplay();
+			$rfd->set_options($this->options);
 			$rfd->set_location($this->feed_location, $this->is_remote);
 
 
@@ -32,7 +35,7 @@
             {
                 $rfd->set_cache_disable($this->disable_cache);
             }
-            
+
             if(isset($this->params['display_timestamp']))
             {
                 $rfd->set_display_timestamp($this->params['display_timestamp']);
